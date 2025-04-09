@@ -6,9 +6,9 @@ The collected data is part of what is commonly referred to as teledata. The poli
 
 In this exercise, you will implement a simplified version of a TSP logging system.
 
-### Exercise 0x00 – Create a Class Diagram for Central
+### Exercise 0x00 – Create a Class Diagram for `Central`
 
-You are given the C++ class Central (shown below). Your task is to create a class diagram based on this code.
+Create a UML class diagram that shows the structure of the Central class and its relationships to other classes.
 
 ```cpp
 #include <vector>
@@ -18,7 +18,7 @@ class Central {
 public:
   Central();
   Central(Logger);
-  void log(Activity* activity); 
+  void log(Activity *activity); 
   void printLog();
   Logger getLogger();
   void setLogger(Logger logger);
@@ -37,7 +37,7 @@ Now that you have created a UML diagram for the TeleCentral system, it's time to
 
 Based on the UML diagram below:
 
-![exercise-0x01.svg](exercise-0x01.svg)
+![tsp.svg](tsp.svg)
 
 Implement the following in C++:
 - The `Logger` class
@@ -47,7 +47,7 @@ Implement the following in C++:
 > **_Reflection_**
 > 
 > _As you work on this, take a moment to think about the relationships shown in the UML diagram:_
->- _What do the cardinalities (the numbers next to the lines between classes) tell you about how the classes are connected?_
+> - _What do the cardinalities (the numbers next to the lines between classes) tell you about how the classes are connected?_
 > - _Write down your thoughts or discuss them with your group._
 
 Now that we have an UML representation of the `TeleCentral` class, it's time to implement some classes defined in UML.
