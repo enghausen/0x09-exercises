@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "name": "Build and Run",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/tele-central",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "lldb",
+      "preLaunchTask": "build"
+    }
+  ],
+  "version": "2.0.0"
+}
