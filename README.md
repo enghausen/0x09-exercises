@@ -41,7 +41,12 @@ Based on the UML diagram below:
 
 Implement the following in C++:
 - The `Logger` class
+  - `getLogs()` returns all activities
+  - `log(activity)` pushes an `Activity` object to the back of the list of activities
+  - `getNumberOfActivities()` returns the total number of activities
 - The `Activity` class
+  - `validate(string)` checks, that the argument is a string that only contains numeric characters
+  - `typeAsString(type)` converts a `Type` enumeration value to a string
 - The `Type` enum
 
 > **_Reflection_**
@@ -50,10 +55,10 @@ Implement the following in C++:
 > - _What do the cardinalities (the numbers next to the lines between classes) tell you about how the classes are connected?_
 > - _Write down your thoughts or discuss them with your group._
 
-Now that we have an UML representation of the `TeleCentral` class, it's time to implement some classes defined in UML.
+Now that we have an UML representation of the TeleCentral system, it's time to implement the classes as defined in the UML and the class descriptions.
 
-## Exercise 0x10 — Testing our implementation
-Now it's time to check that everything is working according to spec. Implement a program (a `main()` function) and use add the test data to your project (available on Brightspace in a header file `activity-log.h`) to test your classes.
+## Exercise 0x10 — Implementation test
+Now it's time to check that everything is working according to spec. Implement a program (a `main()` function) and use add the test data to your project (available on Brightspace in a header file `data-log.h`) to test your classes.
 
 ```cpp
 #include <iostream>
@@ -77,9 +82,53 @@ int main (int argc, char* argv[]) {
 ## Exercise 0x20 — Filtering
 Now it's time to implement some additional business logic in our classes.
 
-Start by adding the header and implementation file for the `DateTime` class into your project (they're available on Brightspace). The class is a simple wrapper around a standard library, that allows to print Unix timestamps in a human-readable format.
+Start by adding the header and implementation file for the `DateTime` class into your project. 
 
-Add a new function to called `filter(int from, int to)` to the `Logger` class (and remember to update your diagrams) that iterates (I'll recommend a `for`-loop) over all messages and prints out activities whose timestamps are within the period as defined by `from` and `to`. Use the `DateTime` class to convert the integer value to a datetime string.
+```cpp
+#ifndef DATETIME_H
+#define DATETIME_H
+
+#include <ctime>
+#include <string>
+
+class DateTime {
+  public:
+    DateTime(int timestamp);
+    std::string getString();
+    int getTimestamp();
+  private:
+    std::time_t timestamp;
+};
+
+#endif
+```
+
+```cpp
+#include "datetime.h"
+
+DateTime::DateTime(int timestamp) : timestamp(timestamp) { }
+
+std::string DateTime::getString() {
+  std::tm* timeInfo = std::gmtime(&timestamp);
+  char out[20];
+  std::strftime(out, sizeof(out), "%Y-%m-%d %H:%M:%S", timeInfo);
+  return out;
+}
+
+int DateTime::getTimestamp() {
+  return timestamp;
+}
+```
+
+The DateTime class is a simple wrapper around a standard library. It makes it easy to convert and print Unix timestamps in a human-readable format.
+
+Your task is to add a new method, `filter(int from, int to)`, to the `Logger` class. Don’t forget to update your UML diagrams accordingly.
+
+This new method should:
+
+1. Iterate over all stored messages (we recommend using a for loop).
+2. Print out only those activities whose timestamps fall within the range defined by from and to (inclusive).
+3. For each matching activity, use the DateTime class to convert its timestamp (an integer) into a readable date-time string before printing.
 
 ##### Example output, where `from` is 1711936658 and `to` is 1712331675 
 ```
