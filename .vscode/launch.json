@@ -10,7 +10,12 @@
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": true,
-      "MIMode": "lldb",
+      "windows": {
+        "MIMode": "gdb"
+      },
+      "osx": {
+        "MIMode": "lldb",
+      },
       "preLaunchTask": "build"
     }
   ],
