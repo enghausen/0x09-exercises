@@ -9,6 +9,9 @@
         "-g",
         "main.cpp",
         "datetime.cpp",
+        "activity.cpp",
+        "central.cpp",
+        "logger.cpp",
         "-o",
         "${workspaceFolder}/build/tele-central"
       ],

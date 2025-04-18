@@ -1,0 +1,17 @@
+//Exercise 0x00 
+classDiagram
+    class Central {
+        -Logger logger
+        +Central(): void
+        +Central(logger: Logger): void
+        +log(activity: Activity*): void
+        +printLog(): void
+        +getLogger(): Logger
+        +setLogger(logger: Logger): void
+    }
+
+    class Logger
+    class Activity
+
+    Central *-- Logger : has-a
+    Central ..> Activity : uses

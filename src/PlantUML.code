@@ -1,0 +1,20 @@
+//Exercise 0x00 
+@startuml
+skinparam classAttributeIconSize 0
+
+class Central {
+  - logger: Logger
+  + Central(): void
+  + Central(logger: Logger): void
+  + log(activity: Activity*): void
+  + printLog(): void
+  + getLogger(): Logger
+  + setLogger(logger: Logger): void
+}
+
+class Logger
+class Activity
+
+Central *-- Logger : has-a
+Central ..> Activity : uses
+@enduml
